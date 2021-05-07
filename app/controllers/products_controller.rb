@@ -21,9 +21,8 @@ class ProductsController < ApplicationController
       
     redirect_to dashboard_path
     
-    rescue ActiveRecord::RecordInvalid
-      redirect_to new_error_product_path
-
+  rescue ActiveRecord::RecordInvalid
+    redirect_to new_error_product_path
   end
   
   def edit; end
