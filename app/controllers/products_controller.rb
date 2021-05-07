@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     redirect_to dashboard_path
     
     rescue ActiveRecord::RecordInvalid
-      sredirect_to new_error_product_path
+      redirect_to new_error_product_path
 
   end
   
