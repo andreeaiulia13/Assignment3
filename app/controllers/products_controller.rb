@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
- before_action :set_product, only:[:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
     @products = Product.all
@@ -16,15 +16,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    begin
-      product = Product.create!(product_params.except(:image))
-      product.image.attach(product_params[:image])
+    product = Product.create!(product_params.except(:image))
+    product.image.attach(product_params[:image])
       
-      redirect_to dashboard_path
+    redirect_to dashboard_path
     
-    rescue => exception
-      redirect_to new_error_product_path
-    end
+    rescue ActiveRecord::RecordInvalid
+      sredirect_to new_error_product_path
+
   end
   
   def edit; end
